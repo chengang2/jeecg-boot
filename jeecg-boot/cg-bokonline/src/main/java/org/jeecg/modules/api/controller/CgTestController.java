@@ -3,6 +3,7 @@ package org.jeecg.modules.api.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/test/cg")
+@Api(tags="cg-bokonline测试...")
 @Slf4j
 public class CgTestController extends JeecgController<CgTest, CgService> {
 
@@ -49,7 +51,7 @@ public class CgTestController extends JeecgController<CgTest, CgService> {
      * @param req
      * @return
      */
-    @ApiOperation(value = "获取Demo数据列表", notes = "获取所有Demo数据列表")
+    @ApiOperation(value = "分页获取Demo数据列表", notes = "分页获取所有Demo数据列表")
     @GetMapping(value = "/list")
     public Result<?> list(CgTest cgtest, @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
                           HttpServletRequest req) {
@@ -100,7 +102,7 @@ public class CgTestController extends JeecgController<CgTest, CgService> {
      * @return
      */
     @GetMapping(value = "/queryByName")
-    @ApiOperation(value = "通过ID查询DEMO", notes = "通过ID查询DEMO")
+    @ApiOperation(value = "通过NameCode查询DEMO", notes = "通过NameCode查询DEMO")
     public Result<?> queryByName(@ApiParam(name = "nameCode", value = "示例id", required = true) @RequestParam(name = "nameCode", required = true) String nameCode) {
         List<CgTest> cgTests = cgService.selectTestByName(nameCode);
         return Result.OK(cgTests);
@@ -113,7 +115,7 @@ public class CgTestController extends JeecgController<CgTest, CgService> {
      * @return
      */
     @GetMapping(value = "/queryByMap")
-    @ApiOperation(value = "通过ID查询DEMO", notes = "通过ID查询DEMO")
+    @ApiOperation(value = "通过Map查询DEMO", notes = "通过Map查询DEMO")
     public Result<?> queryByMap(@ApiParam(name = "nameCode", value = "示例id", required = true) @RequestParam(name = "nameCode", required = true) String nameCode) {
         Map<String,Object> map = new HashMap<>();
         map.put("name_code",nameCode);
@@ -172,7 +174,7 @@ public class CgTestController extends JeecgController<CgTest, CgService> {
      */
     @AutoLog(value = "删除测试DEMO")
     @DeleteMapping(value = "/deleteByAge")
-    @ApiOperation(value = "通过ID删除DEMO", notes = "通过ID删除DEMO")
+    @ApiOperation(value = "通过Age删除DEMO", notes = "通过Age删除DEMO")
     public Result<?> deleteByAge(@RequestParam(name = "age", required = true) Integer age) {
         cgService.deleteTestByAge(age);
         return Result.OK("删除成功!");
