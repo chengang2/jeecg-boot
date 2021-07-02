@@ -44,6 +44,16 @@
 			<artifactId>cg-bokonline</artifactId>
 			<version>${jeecgboot.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jeecgframework.boot</groupId>
+			<artifactId>cg-boot</artifactId>
+			<version>${jeecgboot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jeecgframework.boot</groupId>
+			<artifactId>cg_kafka</artifactId>
+			<version>${jeecgboot.version}</version>
+		</dependency>
 		<!-- 积木报表 -->
 		<dependency>
 			<groupId>org.jeecgframework.jimureport</groupId>

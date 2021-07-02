@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cg-bokonline</artifactId>
+    <artifactId>cg-boot</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.jeecgframework.boot</groupId>
@@ -19,13 +19,8 @@
             <groupId>org.jeecgframework.boot</groupId>
             <artifactId>jeecg-system-local-api</artifactId>
         </dependency>
-<!--
-        <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
-            <artifactId>jeecg-boot-module-system</artifactId>
-        </dependency>
--->
 
 
     </dependencies>
+
 </project>

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cg-bokonline</artifactId>
+    <artifactId>cg_kafka</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.jeecgframework.boot</groupId>
@@ -19,13 +19,13 @@
             <groupId>org.jeecgframework.boot</groupId>
             <artifactId>jeecg-system-local-api</artifactId>
         </dependency>
-<!--
+        <!-- https://mvnrepository.com/artifact/com.github.briandilley.jsonrpc4j/jsonrpc4j -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
-            <artifactId>jeecg-boot-module-system</artifactId>
+            <groupId>com.github.briandilley.jsonrpc4j</groupId>
+            <artifactId>jsonrpc4j</artifactId>
+            <version>1.5.3</version>
         </dependency>
--->
-
 
     </dependencies>
+
 </project>

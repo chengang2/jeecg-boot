@@ -7,11 +7,15 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.aspect.annotation.AutoLog;
 import org.jeecg.common.constant.CommonConstant;
+import org.jeecg.common.system.api.ISysBaseAPI;
 import org.jeecg.common.system.base.controller.JeecgController;
 import org.jeecg.common.system.query.QueryGenerator;
+import org.jeecg.common.system.vo.LoginUser;
+import org.jeecg.config.shiro.ShiroRealm;
 import org.jeecg.modules.api.entity.CgTest;
 import org.jeecg.modules.api.service.CgService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +32,11 @@ public class CgTestController extends JeecgController<CgTest, CgService> {
 
     @Autowired
     private CgService cgService;
+//    @Autowired
+//    private ISysBaseAPI sysBaseAPI;
 
+    //@Autowired
+    //private ShiroRealm shiroRealm ;
     /**
      * hello world
      *
@@ -51,10 +59,18 @@ public class CgTestController extends JeecgController<CgTest, CgService> {
      * @param req
      * @return
      */
+    @AutoLog(value = "分页获取Demo数据列表")
     @ApiOperation(value = "分页获取Demo数据列表", notes = "分页获取所有Demo数据列表")
     @GetMapping(value = "/list")
-    public Result<?> list(CgTest cgtest, @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
+    public Result<?> list(CgTest cgtest,@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
                           HttpServletRequest req) {
+        LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
+        log.info("用户名："+ sysUser.getUsername());
+
+        //String token = req.getParameter("token");
+        //LoginUser loginUser = shiroRealm.checkUserTokenIsEffect(token);
+        //log.info("真实名："+ loginUser.getRealname());
+
         QueryWrapper<CgTest> queryWrapper = QueryGenerator.initQueryWrapper(cgtest, req.getParameterMap());
         Page<CgTest> page = new Page<CgTest>(pageNo, pageSize);
 

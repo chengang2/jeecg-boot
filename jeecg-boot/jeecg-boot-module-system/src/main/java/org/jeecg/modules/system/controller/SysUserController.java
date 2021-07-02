@@ -130,7 +130,7 @@ public class SysUserController {
 	}
 
     //@RequiresRoles({"admin"})
-    //@RequiresPermissions("user:add")
+    @RequiresPermissions("user:add")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public Result<SysUser> add(@RequestBody JSONObject jsonObject) {
 		Result<SysUser> result = new Result<SysUser>();

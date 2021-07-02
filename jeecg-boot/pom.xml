@@ -52,6 +52,8 @@
         <module>jeecg-boot-module-demo</module>
         <module>jeecg-boot-module-system</module>
 		<module>cg-bokonline</module>
+		<module>cg-boot</module>
+        <module>cg_kafka</module>
 
 		<!-- 需要微服务，请打开注释
         <module>jeecg-boot-starter</module>
