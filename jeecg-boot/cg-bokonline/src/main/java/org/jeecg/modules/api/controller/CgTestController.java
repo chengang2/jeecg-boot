@@ -14,6 +14,7 @@ import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.system.api.ISysBaseAPI;
 import org.jeecg.common.system.base.controller.JeecgController;
 import org.jeecg.common.system.query.QueryGenerator;
+import org.jeecg.common.system.vo.DictModel;
 import org.jeecg.common.system.vo.LoginUser;
 import org.jeecg.config.shiro.ShiroRealm;
 import org.jeecg.modules.api.entity.CgTest;
@@ -32,8 +33,8 @@ public class CgTestController extends JeecgController<CgTest, CgService> {
 
     @Autowired
     private CgService cgService;
-//    @Autowired
-//    private ISysBaseAPI sysBaseAPI;
+    @Autowired
+    private ISysBaseAPI sysBaseAPI;
 
     //@Autowired
     //private ShiroRealm shiroRealm ;
@@ -70,6 +71,12 @@ public class CgTestController extends JeecgController<CgTest, CgService> {
         //String token = req.getParameter("token");
         //LoginUser loginUser = shiroRealm.checkUserTokenIsEffect(token);
         //log.info("真实名："+ loginUser.getRealname());
+        List<DictModel> dictModels = sysBaseAPI.queryDictItemsByCode("kafka_node");
+        for (DictModel dict:dictModels) {
+            String text = dict.getText();
+            String value = dict.getValue();
+            System.out.println("text=="+text+"--value=="+value);
+        }
 
         QueryWrapper<CgTest> queryWrapper = QueryGenerator.initQueryWrapper(cgtest, req.getParameterMap());
         Page<CgTest> page = new Page<CgTest>(pageNo, pageSize);

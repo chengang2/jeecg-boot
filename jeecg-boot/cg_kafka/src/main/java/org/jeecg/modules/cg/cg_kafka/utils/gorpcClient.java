@@ -11,26 +11,26 @@ import java.util.Map;
 
 public class gorpcClient {
 
-    public static void gorpc_client(){
-        System.out.println("11111111111111111111111");
+    public static ReplyBean gorpc_client(String hostname,int port,String methodName,Map<String,Object> params){
+        System.out.println("11111111111111111111111:"+hostname+":"+port+":"+methodName+":"+params);
+        ReplyBean reply = null;
         Socket socket = null;
         try {
-            socket = new Socket("localhost", 1234);
+            socket = new Socket(hostname, port);
             JsonRpcClient client = new JsonRpcClient();
 
             InputStream ips = socket.getInputStream();
             OutputStream ops = socket.getOutputStream();
-            Map<String,Object> params = new HashMap();
-            params.put("A",17);
-            params.put("B",8);
-            Integer  reply = client.invokeAndReadResponse("Arith.Aultiply", new Object[]{params}, Integer.class,ops, ips);
 
-            System.out.println("reply: " + reply);
+            reply = client.invokeAndReadResponse(methodName, new Object[]{params}, ReplyBean.class, ops, ips);
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
+
+        return reply;
     }
 
 }
