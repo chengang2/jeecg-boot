@@ -11,4 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ICgN9eCallbackService extends IService<CgN9eCallback> {
 
+    public boolean deletetByWorkflowName(String workflowName);
+
 }

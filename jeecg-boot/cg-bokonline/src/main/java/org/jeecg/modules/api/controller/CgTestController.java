@@ -132,6 +132,21 @@ public class CgTestController extends JeecgController<CgTest, CgService> {
     }
 
     /**
+     * 通过name查询
+     *
+     * @param nameCode
+     * @return
+     */
+    @GetMapping(value = "/queryByList")
+    @ApiOperation(value = "通过NameCode查询DEMO", notes = "通过NameCode查询DEMO")
+    public Result<?> queryByList(@ApiParam(name = "nameCode", value = "示例id", required = true) @RequestParam(name = "nameCode", required = true) String nameCode) {
+        QueryWrapper<CgTest> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("name_code",nameCode);
+        List<CgTest> cgTests = cgService.selectByCg(queryWrapper);
+        return Result.OK(cgTests);
+    }
+
+    /**
      * 通过map查询
      *
      * @param nameCode

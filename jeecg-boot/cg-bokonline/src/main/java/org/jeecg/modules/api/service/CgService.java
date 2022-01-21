@@ -1,5 +1,6 @@
 package org.jeecg.modules.api.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.jeecg.modules.api.entity.CgTest;
 
@@ -23,4 +24,6 @@ public interface CgService extends IService<CgTest> {
     public CgTest selectTestById(int id);
 
     public List<CgTest> selectTest(Map<String,Object> map);
+
+    List<CgTest> selectByCg(QueryWrapper<CgTest> queryWrapper);
 }

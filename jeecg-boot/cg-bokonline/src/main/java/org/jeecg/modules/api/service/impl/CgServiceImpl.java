@@ -1,5 +1,6 @@
 package org.jeecg.modules.api.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.jeecg.modules.api.entity.CgTest;
 import org.jeecg.modules.api.mapper.CgTestMapper;
@@ -34,6 +35,13 @@ public class CgServiceImpl extends ServiceImpl<CgTestMapper, CgTest> implements 
     public List<CgTest> selectTest(Map<String,Object> map) {
         return cgTestMapper.selectByMap(map);
     }
+
+    @Override
+    public List<CgTest> selectByCg(QueryWrapper<CgTest> queryWrapper) {
+
+        return cgTestMapper.selectByNameList(queryWrapper);
+    }
+
     @Override
     public int UpdateTestById(CgTest cgtest) {
         return cgTestMapper.updateById(cgtest);
@@ -50,4 +58,7 @@ public class CgServiceImpl extends ServiceImpl<CgTestMapper, CgTest> implements 
     public int deleteTestByIds(List<Integer> ids){
         return cgTestMapper.deleteBatchIds(ids);
     }
+
+
+
 }
